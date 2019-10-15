@@ -13,7 +13,7 @@ public class NeuralNetwork {
 	private static int maxinputnum = 5000;
 	private static double ymin = -1;
 	
-	public boolean NN(double[][] sourceDataArray, int loopcnt, int selecmodel) throws IOException { /////�߿�: main�� nn���� ������ �Ű������� �迭�� �������ޱ� ��������getData�� �μ��γѱ�
+	public boolean NN(double[][] sourceDataArray, int loopcnt, int selecmodel) throws IOException { //sourceDataArray -> getData()에 인수로 사용
 	double[][] wh = new double[hiddennum][inputnum];
 	double[][] wo = new double[outputnum][hiddennum];
 	double[] bias1 = new double[hiddennum];
@@ -42,17 +42,17 @@ public class NeuralNetwork {
 			  break;
 	
 	}
-	File whFile = new File(str+"_wh.txt");//������ ����ġ
-	File woFile = new File(str+"_wo.txt");//����� ����ġ
-	File b1File = new File(str+"_hbias.txt");//������ �Ӱ�ġ
-	File b2File = new File(str+"_obias.txt");//����� ����ġ
+	File whFile = new File(str+"_wh.txt");//히든층 가중치
+	File woFile = new File(str+"_wo.txt");//출력층 가중치
+	File b1File = new File(str+"_hbias.txt");//히든층 임계치
+	File b2File = new File(str+"_obias.txt");//출력층 임계치
 	File xoffsetFile = new File(str+"_xoffset.txt");
 	File gainFile = new File(str+"_gain.txt");
 
 	initwh(whFile,b1File,wh,bias1);
 	initwo(woFile,b2File,wo,bias2);
 	//print(wh,wo,bias1,bias2);
-	n_of_e = getData(sourceDataArray,xoffsetFile,gainFile,data,xoffset,gain,loopcnt); //sourceData �� �Ѱܹ��� �迭�� ������ ���� sourceData -> data �� ������
+	n_of_e = getData(sourceDataArray,xoffsetFile,gainFile,data,xoffset,gain,loopcnt); 
 	double[][] o1 = new double[n_of_e][outputnum];
 	double[] result = new double[inputnum]; //to bsxfun
 	System.out.println("n_of_e :"+" "+n_of_e);
@@ -77,7 +77,7 @@ public class NeuralNetwork {
 	//double fake = (double)cnt2/(double)n_of_e * 100.0;
 	double real = (double)cnt1/(double)(cnt1+cnt2) * 100.0;
 	double fake = (double)cnt2/(double)(cnt1+cnt2) * 100.0;
-	System.out.println("��Ȯ�� : "+real); //��Ȯ��üũ �ӽ÷�
+	System.out.println("정확도 : "+real); //임시 정확도 체크
 	if(real>60) {
 		System.out.print("real ");
 		System.out.printf("%.2f",real);
@@ -94,7 +94,7 @@ public class NeuralNetwork {
 	public static void forward(double[][] wh,double[][] wo, double[] hi, double[] data,double[] bias1,double[] bias2,double[] o)
 	{
 		int i,j;
-		double u,u1; //������
+		double u,u1; //가중합
 		for(i=0; i<hiddennum;i++)
 		{	u=0;
 			for(j=0; j<inputnum;j++)
@@ -102,13 +102,13 @@ public class NeuralNetwork {
 				u += data[j]*wh[i][j];
 			}
 			u += bias1[i];
-			hi[i] = sig(u); //�߰��� sigmoid���
+			hi[i] = sig(u); //중간층 sigmoid사용
 		}
 		for(i=0; i<outputnum;i++) 
 		{	u1=0;
 			for(j=0; j<hiddennum; j++)
 			{
-				u1 += hi[j]*wo[i][j];//����ġó��
+				u1 += hi[j]*wo[i][j];//가중치 처리
 			}
 			u1 += bias2[i];
 			o[i] = sig(u1);
@@ -119,7 +119,7 @@ public class NeuralNetwork {
 		return (2.0)/(1.0+Math.exp(-2*u))-1;  //tansig
 	}
 	public static int getData(double[][] sourceData, File xoffsetFile, File gainFile, double[][] data, double[] xoffset, double[] gain,int loopcnt) throws FileNotFoundException
-	{ 
+	{ //sourceData -> data
 		
 		FileReader f3 = new FileReader(xoffsetFile);
 		Scanner sc3 = new Scanner(f3);
@@ -127,11 +127,11 @@ public class NeuralNetwork {
 		Scanner sc4 = new Scanner(f4);
 		
 		int n_of_e=0;
-		for(int i=0; i<loopcnt; i++) /////mfcc�迭�� ����
+		for(int i=0; i<loopcnt; i++) /////mfcc배열의 길이 만큼
 		{
 			for(int j=0; j<inputnum;j++)
 			{
-				data[i][j] = sourceData[i][j];	//�� ����
+				data[i][j] = sourceData[i][j];	//값 대입
 			
 			}			
 			n_of_e++;
@@ -153,13 +153,13 @@ public class NeuralNetwork {
 	
 	
 	
-	/*�߰��� ����ġ �� �Ӱ�ġ �ʱ�ȭ*/
+	/*중간층 가중치 및 임계치 초기화*/
 	public static void initwh(File file1,File file2, double[][] wh,double[] bias1) throws FileNotFoundException {
 	int i,j;
-	FileReader f = new FileReader(file1); //����ġ 
-	Scanner sc = new Scanner(f); //��ĳ��Ŭ������ ���Ϸκ��� double�Է¹���
-	FileReader f2 = new FileReader(file2); //�Ӱ�ġ
-	Scanner sc2 = new Scanner(f2); //��ĳ��Ŭ������ ���Ϸκ��� double�Է¹���
+	FileReader f = new FileReader(file1); //가중치 
+	Scanner sc = new Scanner(f); 
+	FileReader f2 = new FileReader(file2); //임계치
+	Scanner sc2 = new Scanner(f2);
 	for(i=0; i<hiddennum; i++) { 
 		for(j=0; j<inputnum;j++) {
 			wh[i][j] = sc.nextDouble();
@@ -171,14 +171,14 @@ public class NeuralNetwork {
 	sc.close();
 	sc2.close();
 	}
-	/*����� ����ġ �� �Ӱ�ġ �ʱ�ȭ*/
+	/*출력층 가중치 및 임계치 초기화*/
 	public static void initwo(File file1, File file2, double[][] wo,double[] bias2) throws FileNotFoundException
 	{
 		int i,j;
-		FileReader f = new FileReader(file1); //����ġ 
-		Scanner sc = new Scanner(f); //��ĳ��Ŭ������ ���Ϸκ��� double�Է¹���
-		FileReader f2 = new FileReader(file2); //�Ӱ�ġ
-		Scanner sc2 = new Scanner(f2); //��ĳ��Ŭ������ ���Ϸκ��� double�Է¹���
+		FileReader f = new FileReader(file1); //가중치
+		Scanner sc = new Scanner(f); 
+		FileReader f2 = new FileReader(file2); //임계치
+		Scanner sc2 = new Scanner(f2);
 		
 		for(i=0;i<outputnum;i++)
 		{
