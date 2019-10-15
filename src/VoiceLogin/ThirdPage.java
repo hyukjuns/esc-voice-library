@@ -104,7 +104,7 @@ public class ThirdPage {
 		        index = table_data[row][col];
 		        if (row >= 0 && col >= 0) {
 		        	table.setSelectionBackground(Color.BLUE);        	
-		        	//JOptionPane.showMessageDialog(null, "�߱��� �Ϸ�Ǿ����ϴ�.."+row+" "+col);
+		        	//JOptionPane.showMessageDialog(null, "발권이 완료되었습니다."+row+" "+col);
 		        }
 		    }
 		});
@@ -134,7 +134,7 @@ public class ThirdPage {
 		       index = table2_data[row][col];
 		        if (row >= 0 && col >= 0) {
 		        	table2.setSelectionBackground(Color.BLUE);
-		        	//JOptionPane.showMessageDialog(null, "�߱��� �Ϸ�Ǿ����ϴ�.."+row+" "+col);
+		        	//JOptionPane.showMessageDialog(null, "발권이 완료되었습니다."+row+" "+col);
 		        }
 		    }
 		});
@@ -164,7 +164,7 @@ public class ThirdPage {
 		        index = table3_data[row][col];
 		        if (row >= 0 && col >= 0) {
 		        	table3.setSelectionBackground(Color.BLUE);
-		        	//JOptionPane.showMessageDialog(null, "�߱��� �Ϸ�Ǿ����ϴ�.."+row+" "+col);
+		        	//JOptionPane.showMessageDialog(null, "발권이 완료되었습니다."+row+" "+col);
 		        }
 		    }
 		});
@@ -194,51 +194,51 @@ public class ThirdPage {
 		       index = table4_data[row][col];
 		        if (row >= 0 && col >= 0) {
 		        	table4.setSelectionBackground(Color.BLUE);
-		        	//JOptionPane.showMessageDialog(null, "�߱��� �Ϸ�Ǿ����ϴ�.."+row+" "+col);
+		        	//JOptionPane.showMessageDialog(null, "발권이 완료되었습니다."+row+" "+col);
 		        }
 		    }
 		});
 		
-		// DefaultTableCellHeaderRenderer ���� (��� ������ ����)
+		// DefaultTableCellHeaderRenderer 생성(가운데 정렬을 위함)
 		DefaultTableCellRenderer tScheduleCellRenderer = new DefaultTableCellRenderer();
-		// DefaultTableCellHeaderRenderer�� ������ ��� ���ķ� ����
+		// DefaultTableCellHeaderRenderer의 정렬을 가운데 정렬로 지정
 		tScheduleCellRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-		// ������ ���̺��� ColumnModel�� ������
+		// 정렬할 테이블의 ColumnModel을 가져옴
 		TableColumnModel tcmSchedule = table.getColumnModel();
 		for (int i = 0; i < tcmSchedule.getColumnCount(); i++) {
 		tcmSchedule.getColumn(i).setCellRenderer(tScheduleCellRenderer);
 		}
-		// ������ ���̺��� ColumnModel�� ������
+		// 정렬할 테이블의 ColumnModel을 가져옴
 		TableColumnModel tcmSchedule2 = table2.getColumnModel();
 		for (int i = 0; i < tcmSchedule2.getColumnCount(); i++) {
 		tcmSchedule2.getColumn(i).setCellRenderer(tScheduleCellRenderer);
 		}
-		// ������ ���̺��� ColumnModel�� ������
+		// 정렬할 테이블의 ColumnModel을 가져옴
 		TableColumnModel tcmSchedule3 = table3.getColumnModel();
 		for (int i = 0; i < tcmSchedule3.getColumnCount(); i++) {
 		tcmSchedule3.getColumn(i).setCellRenderer(tScheduleCellRenderer);
 		}
-		// ������ ���̺��� ColumnModel�� ������
+		// 정렬할 테이블의 ColumnModel을 가져옴
 		TableColumnModel tcmSchedule4 = table4.getColumnModel();
 		for (int i = 0; i < tcmSchedule4.getColumnCount(); i++) {
 		tcmSchedule4.getColumn(i).setCellRenderer(tScheduleCellRenderer);
 		}
 		
-		JLabel lblNewLabel = new JLabel("�� 1������");
+		JLabel lblNewLabel = new JLabel("제 1 열람실");
 		lblNewLabel.setForeground(SystemColor.textHighlight);
-		lblNewLabel.setFont(new Font("����", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("돋움", Font.BOLD, 20));
 		lblNewLabel.setBounds(167, 10, 104, 31);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Ȯ��");
-		btnNewButton.setFont(new Font("����", Font.BOLD, 15));
+		JButton btnNewButton = new JButton("제 1 열람실");
+		btnNewButton.setFont(new Font("돋움", Font.BOLD, 15));
 		btnNewButton.setForeground(SystemColor.desktop);
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.setBounds(182, 229, 70, 23);
 		frame.getContentPane().add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,index+"�� �ڸ� �߱��� �Ϸ�Ǿ����ϴ�.");
+				JOptionPane.showMessageDialog(null,index+"번 자리 발권이 완료 되었습니다.");
 			}
 		});
 	frame.setVisible(true);
