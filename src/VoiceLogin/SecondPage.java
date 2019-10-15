@@ -34,9 +34,9 @@ public class SecondPage {
     public double[][] sourceData = new double[maxDataNum][13];
     public int dataNum;
     
-    public boolean who=false; //�з��������
-    ThirdPage page3 = new ThirdPage();//����° ������ �ν��Ͻ�����
-    //�Ʒ��� ��ϵ� �� �л��� ������Ʈ��ũ�𵨵��� �ν��Ͻ� ����
+    public boolean who=false; //분류결과 저장
+    ThirdPage page3 = new ThirdPage();//세번째 페이지 인스턴스 생성
+    //아래는 등록된 각 학생의 뉴럴네트워크 모델들의 인스턴스 생성
     public NeuralNetwork neuralNetwork = new NeuralNetwork(); //�߰� 1
 
     
@@ -62,10 +62,10 @@ public class SecondPage {
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.getContentPane().setLayout(null);
 			
-			JLabel lblNewLabel = new JLabel("�й��� �����ּ���.");
+			JLabel lblNewLabel = new JLabel("학번을 말해주세요.");
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 			lblNewLabel.setForeground(UIManager.getColor("ProgressBar.selectionBackground"));
-			lblNewLabel.setFont(new Font("����", Font.BOLD, 22));
+			lblNewLabel.setFont(new Font("굴림", Font.BOLD, 22));
 			lblNewLabel.setBounds(108, 10, 217, 80);
 			frame.getContentPane().add(lblNewLabel);
 			
@@ -97,7 +97,7 @@ public class SecondPage {
 						startBtn.setEnabled(true);
 						stopBtn.setEnabled(false);
 						extract();
-						JOptionPane.showMessageDialog(null, "mfccƯ¡����Ϸ�.");
+						JOptionPane.showMessageDialog(null, "mfcc특징 추출완료");
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
@@ -114,11 +114,11 @@ public class SecondPage {
 						e1.printStackTrace();
 					}
 					if(who) {
-						JOptionPane.showMessageDialog(null, "Ȯ�εǾ����ϴ�..");
-						page3.third();//����° ������ ����
+						JOptionPane.showMessageDialog(null, "확인되었습니다.");
+						page3.third();//세번째 페이지 실행
 					}
 					else
-						JOptionPane.showMessageDialog(null, "�źεǾ����ϴ� �ٽ� �õ��ϼ���..");
+						JOptionPane.showMessageDialog(null, "거부되었습니다, 다시 시도하세요.");
 				}
 			});
 			frame.setVisible(true);
@@ -133,7 +133,7 @@ public class SecondPage {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         BufferedInputStream in;
         byte[] data = new byte[512];
-        System.out.println("data����: "+data.length);
+        System.out.println("data길이: "+data.length);
         double[] inbuf = new double[W];
         double[] fftbuf = new double[W];
         
@@ -141,10 +141,10 @@ public class SecondPage {
             in = new BufferedInputStream(new FileInputStream(AudioFile));
             System.out.println("in.available: "+in.available());;
             int read;
-            while ((read = in.read(data)) > 0) { //in(AudioFile���� �����͸� �о data��� ���ۿ� �־��
-                out.write(data, 0, read); //data �迭�� 0(����)���� read���̸�ŭ�о��
+            while ((read = in.read(data)) > 0) { //in(AudioFile에서 데이터를 읽어서 data라는 버퍼에 넣음
+                out.write(data, 0, read); //data 배열에 0(시작)부터 read길이 만큼 읽는다
             }
-            out.flush(); //���ۿ� ���ִ��� ����
+            out.flush(); //버퍼에 쌓인 데이터 방출
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -178,7 +178,7 @@ public class SecondPage {
        }//end loop
        dataNum = num;
  }
-	// ��������
+	// 녹음구현
 	public void recording() throws LineUnavailableException {
 		format = getAudioFormat();
 		DataLine.Info info = new DataLine.Info(TargetDataLine.class,format);
@@ -212,7 +212,7 @@ public class SecondPage {
 		});
 		recordThread.start();
 	}
-	//������������
+	//녹음파일저장
 	public void save(File wavFile) throws IOException {
 		 byte[] audioData = recordBytes.toByteArray();
 		 ByteArrayInputStream bais = new ByteArrayInputStream(audioData);
@@ -318,4 +318,3 @@ public class SecondPage {
         return k;
     }
 }
-
