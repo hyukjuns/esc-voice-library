@@ -119,7 +119,8 @@ public class NeuralNetwork {
 	{
 		return (2.0)/(1.0+Math.exp(-2*u))-1;  //tansig
 	}
-	public static int getData(double[][] sourceData, File xoffsetFile, File gainFile, double[][] data, double[] xoffset, double[] gain,int loopcnt) throws FileNotFoundException
+	public static int getData(double[][] sourceData, File xoffsetFile, File gainFile, double[][] data, 
+				  double[] xoffset, double[] gain,int loopcnt) throws FileNotFoundException
 	{ //sourceData -> data
 		
 		FileReader f3 = new FileReader(xoffsetFile);
