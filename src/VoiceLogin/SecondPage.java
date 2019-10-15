@@ -37,7 +37,7 @@ public class SecondPage {
     public boolean who=false; //분류결과 저장
     ThirdPage page3 = new ThirdPage();//세번째 페이지 인스턴스 생성
     //아래는 등록된 각 학생의 뉴럴네트워크 모델들의 인스턴스 생성
-    public NeuralNetwork neuralNetwork = new NeuralNetwork(); //�߰� 1
+    public NeuralNetwork neuralNetwork = new NeuralNetwork(); //추가 1
 
     
     //AudioFormat spec
@@ -45,7 +45,7 @@ public class SecondPage {
 	private TargetDataLine audioLine;
 	private AudioFormat format;
 	private boolean isRunning;
-	File wavFile = new File("C:\\Users\\MAIN\\Desktop\\sibal1.wav");
+	File wavFile = new File("C:\\Users\\MAIN\\Desktop\\audio.wav"); //audio.wav파일을 경로상에 만들어 줘야함(녹음시 덮어씌어지는 파일)
     private AudioFormat getAudioFormat() {
 	    float sampleRate = 8000;
 	    int sampleSizeInBits = 16;
