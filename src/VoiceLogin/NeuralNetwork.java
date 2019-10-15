@@ -13,7 +13,8 @@ public class NeuralNetwork {
 	private static int maxinputnum = 5000;
 	private static double ymin = -1;
 	
-	public boolean NN(double[][] sourceDataArray, int loopcnt, int selecmodel) throws IOException { //sourceDataArray -> getData()에 인수로 사용
+	//sourceDataArray -> getData()에 인수로 사용
+	public boolean NN(double[][] sourceDataArray, int loopcnt, int selecmodel) throws IOException {
 	double[][] wh = new double[hiddennum][inputnum];
 	double[][] wo = new double[outputnum][hiddennum];
 	double[] bias1 = new double[hiddennum];
