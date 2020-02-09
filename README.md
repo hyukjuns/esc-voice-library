@@ -16,6 +16,6 @@
 ### 이름입력화면, 학번녹음 화면, 자리예약 화면
 <img src="./img/app img.png" title="diagram" alt="Diagram"></img><br/>
 
-### *  FAR/FRR
+### * 인식률 FAR/FRR
 <img src="./img/FAR_FRR.png" weight="450px" height="300px" title="diagram" alt="Diagram"></img><br/>
 
