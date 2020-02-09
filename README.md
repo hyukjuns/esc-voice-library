@@ -8,4 +8,4 @@
 
 * 시스템 알고리즘
  사용자는 첫 번째 화면에서 자신의 학번을 입력한다. 각 학번별로 일정한 인수가 저장되어 다음 페이지로 넘어간다. 넘어온 인수를 통해 그 사용자의 뉴럴네트워크 모델이 준비된다. 사용자는 두 번째 페이지에서 학번을 발화한다. 녹음된 음성은 바로 mfcc특징을 추출하여 준비된 뉴럴네트워크에 입력데이터로 사용된다. 뉴럴네트워크는 입력된 데이터를 사용해 정확도를 측정한 뒤 정해놓은 임계치를 넘으면 승인 하게된다. 승인된 사용자만이 열람실 자리를 예약할 수 있다.
-<img src="Diagram.png" width="450px" height="300px" title="diagram" alt="Diagram"></img><br/>
+<img src="./img/Diagram.png" width="450px" height="300px" title="diagram" alt="Diagram"></img><br/>
