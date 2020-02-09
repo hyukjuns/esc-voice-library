@@ -17,5 +17,5 @@
 <img src="./img/app img.png" title="diagram" alt="Diagram"></img><br/>
 
 ### * 성능 확인 FAR/FRR
-<img src="./img/FAR_FRR.png" title="diagram" alt="Diagram"></img><br/>
+<img src="./img/FAR_FRR.png" weight="450px" height="300px" title="diagram" alt="Diagram"></img><br/>
 
