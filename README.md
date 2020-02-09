@@ -15,3 +15,7 @@
 ### * 애플리케이션 화면
 ### 이름입력화면, 학번녹음 화면, 자리예약 화면
 <img src="./img/app img.png" title="diagram" alt="Diagram"></img><br/>
+
+### * 성능 확인 FAR/FRR
+<img src="./img/FAR_FRR.png" title="diagram" alt="Diagram"></img><br/>
+
