@@ -12,5 +12,5 @@
  ### * 사용자 검증 알고리즘 블록 다이어그램
 <img src="./img/Diagram.png" title="diagram" alt="Diagram"></img><br/>
 
-### * 애플리케이션 화면 이름입력화면, 학번녹음 화면, 자리예약 
+### * 애플리케이션 화면 이름입력화면, 학번녹음 화면, 자리예약 화면
 <img src="./img/app img.png" title="diagram" alt="Diagram"></img><br/>
