@@ -1,4 +1,5 @@
 # 화자검증기반 도서관 열람실 자리예약 시스템
+## 2018.02 ~ 2018.06
 * Java, Eclipse-oxygen 1A, Swing toolkit, Matlab, Goldwave
 
 * 뉴럴네트워크는 매트랩의 nprtool에서 역전파알고리즘에 의해 학습된 뉴럴 가중치를 사용합니다.
